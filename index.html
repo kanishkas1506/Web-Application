@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecondBuy</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+    <h2>Second<span>Buy</span></h2>
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#products">Products</a>
+        <a href="#products">Buy</a>
+    </nav>
+    <button onclick="openSell()">Sell an Item</button>
+</header>
+<section class="home" id="home">
+    <p>SECOND-HAND MARKETPLACE</p>
+    <h1>Buy useful things.<br>Sell what you don't need.</h1>
+    <p>Find quality used products at affordable prices.</p>
+    <div class="search">
+        <input id="search" placeholder="Search products...">
+        <button onclick="showProducts()">Search</button>
+    </div>
+</section>
+<section class="categories">
+    <h2>Browse Categories</h2>
+    <div id="categoryButtons"></div>
+</section>
+<main id="products">
+    <div class="heading">
+        <div>
+            <h2>Recently Listed</h2>
+            <p>Products posted by sellers</p>
+        </div>
+        <select id="sort" onchange="showProducts()">
+            <option value="default">Sort by</option>
+            <option value="low">Price: Low to High</option>
+            <option value="high">Price: High to Low</option>
+        </select>
+    </div>
+    <div class="grid" id="productGrid"></div>
+</main>
+<div class="modal" id="sellModal">
+    <form class="form" onsubmit="addProduct(event)">
+        <button type="button" class="close" onclick="closeModal('sellModal')">×</button>
+        <h2>Post a Listing</h2>
+        <input id="newName" placeholder="Product name" required>
+        <select id="newCategory" required>
+            <option value="">Select category</option>
+        </select>
+        <input id="newPrice" type="number" min="1" placeholder="Price in ₹" required>
+        <input id="newLocation" placeholder="Location" required>
+        <textarea id="newDescription" placeholder="Product description"></textarea>
+        <button type="submit">Post Listing</button>
+    </form>
+</div>
+<div class="modal" id="buyModal">
+    <form class="form" onsubmit="placeOrder(event)">
+        <button type="button" class="close" onclick="closeModal('buyModal')">×</button>
+        <h2>Buy Product</h2>
+        <p id="selectedProduct"></p>
+        <input id="buyerName" placeholder="Your name" required>
+        <input id="buyerPhone" type="tel" placeholder="Phone number" required>
+        <input id="buyerAddress" placeholder="Delivery address" required>
+        <select id="paymentMethod" required>
+            <option value="">Select payment method</option>
+            <option>Cash on Delivery</option>
+            <option>UPI</option>
+        </select>
+        <button type="submit">Place Order</button>
+    </form>
+</div>
+
+<footer>
+    <h2>Second<span>Buy</span></h2>
+    <p>A simple marketplace for buying and selling used products.</p>
+    <small>© 2026 SecondBuy</small>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
